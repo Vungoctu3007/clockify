@@ -1,0 +1,11 @@
+Task 1
+    1. Khởi tạo database
+    2. Validate form
+        - ReactJs
+        - Laravel
+    3. Dùng JWT + Refresh Token
+    4. Lưu vào
+        - localStorage
+        - Http cookie only
+
+        

@@ -1,0 +1,117 @@
+/* Cấu hình cho các tài nguyên (cột tài nguyên) */
+.fc-resource-timegrid .fc-resource {
+    background-color: #f9f9f9;  /* Màu nền nhẹ cho các tài nguyên */
+    border-radius: 8px;         /* Bo góc */
+    padding: 8px 16px;          /* Padding xung quanh */
+    font-size: 16px;            /* Kích thước chữ vừa phải */
+    color: #8e44ad;             /* Màu chữ tím */
+    font-weight: bold;          /* Làm đậm chữ */
+    text-align: center;         /* Căn giữa nội dung */
+  }
+
+  /* Điều chỉnh các cột ngày */
+  .fc-day-header {
+    font-size: 18px;
+    font-weight: bold;
+    color: #3498db;  /* Màu sắc của ngày */
+  }
+
+  /* Các ô ngày trong lịch */
+  .fc-day {
+    min-height: 80px; /* Chiều cao tối thiểu cho mỗi ô ngày */
+    border: 1px solid #ddd;  /* Đường viền nhẹ cho các ô */
+    background-color: #fff;  /* Nền trắng */
+  }
+/* Chỉnh sửa giao diện sự kiện */
+.fc-event {
+    background-color: #3498db;  /* Màu nền cho sự kiện */
+    color: #fff;                /* Màu chữ trắng */         /* Khoảng cách giữa các sự kiện */
+    font-size: 14px;            /* Kích thước chữ trong sự kiện */
+    text-align: center;         /* Căn giữa nội dung sự kiện */
+  }
+
+  /* Khi sự kiện đang được kéo (dragging) */
+  .fc-event.dragging {
+    opacity: 0.7;               /* Giảm độ mờ khi kéo sự kiện */
+    cursor: move;               /* Con trỏ "di chuyển" */
+  }
+
+  /* Cải thiện giao diện của các ô giờ */
+  .fc-timegrid-slot {
+    background-color: #f8f8f8;  /* Màu nền nhẹ cho các ô giờ */
+    border-right: 1px solid #e1e1e1;  /* Đường viền phân cách giữa các giờ */
+  }
+/* Khoảng cách giữa các ô ngày trong lịch */
+.fc-week-view .fc-day {
+    padding: 10px 8px;          /* Thêm khoảng cách cho các ô ngày */
+  }
+
+  /* Tạo hiệu ứng hover cho các ô ngày */
+  .fc-day:hover {
+    background-color: #ecf0f1;  /* Màu nền khi di chuột qua */
+    cursor: pointer;           /* Con trỏ "pointer" khi hover */
+  }
+
+/* Tiêu đề của lịch */
+.fc-toolbar-title {
+    font-size: 24px;            /* Kích thước chữ lớn cho tiêu đề */
+    font-weight: bold;          /* Làm đậm tiêu đề */
+    color: #2c3e50;             /* Màu chữ tối cho tiêu đề */
+    padding: 15px 20px;         /* Padding cho tiêu đề */
+  }
+
+  /* Thanh công cụ (toolbar) */
+  .fc-toolbar {
+    background-color: #ecf0f1;  /* Màu nền nhẹ cho thanh công cụ */
+    border-radius: 8px;         /* Bo góc cho thanh công cụ */
+    padding: 10px 20px;         /* Thêm padding cho thanh công cụ */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng cho thanh công cụ */
+  }
+
+  /* Cải thiện hình thức của ngày */
+  .fc-day-number {
+    padding: 8px 12px;  /* Thêm khoảng cách cho số ngày */
+    text-align: center;  /* Căn giữa số ngày */
+  }
+
+  /* Thêm hiệu ứng hover khi rê chuột qua ngày */
+  .fc-day:hover {
+    background-color: #f1f1f1;  /* Màu nền khi hover qua ngày */
+    cursor: pointer;  /* Con trỏ "pointer" khi hover */
+  }
+
+  /* Tăng chiều cao của sự kiện */
+  .fc-event {
+    min-height: 50px; /* Chiều cao tối thiểu cho sự kiện */
+    margin: 5px 0;  /* Khoảng cách giữa các sự kiện */
+    padding: 8px;  /* Thêm khoảng cách bên trong sự kiện */
+  }
+
+
+.fc-timegrid-col-frame {
+    box-shadow: inset 1px 0 0 #c7c4c4;
+}
+.fc-timegrid-col-frame {
+    position: relative;
+    z-index: 10;
+}
+.fc-scroller.fc-scroller-liquid-absolute,
+.fc-scroller-harness.fc-scroller-harness-liquid {
+    overflow: unset !important;
+}
+.fc-direction-ltr .fc-timegrid-col-events {
+    margin: 0px 2.7% 0px 6px;
+}
+.fc .fc-col-header-cell-cushion {
+    display: inline-block;
+    padding: 10px 4px;
+}
+.fc-license-message {
+    display: none;
+}
+.fc-view-harness.fc-view-harness-active {
+    height: 1099px !important;
+  }
+.fc-v-event {
+    border: none;
+}
