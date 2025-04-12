@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router";
 import {
     Clock,
     Calendar,
@@ -17,11 +18,19 @@ import {
 const Sidebar = ({ isCollapsed, toggleSidebar }: { isCollapsed: boolean; toggleSidebar: () => void }) => {
     const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-    const NavItem = ({ icon: Icon, text }: { icon: any; text: string }) => (
-        <a href="#" className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors">
+    const NavItem = ({ icon: Icon, text, to }: { icon: any; text: string; to: string }) => (
+        <NavLink
+            to={to}
+            className={({ isActive }) =>
+                `flex items-center gap-3 px-4 py-3 transition-colors ${
+                    isActive ? "bg-gray-200 text-gray-900" : "text-gray-700 hover:bg-gray-100"
+                }`
+            }
+        >
             <Icon size={20} />
             {!isCollapsed && <span>{text}</span>}
-        </a>
+        </NavLink>
+
     );
 
     const SectionTitle = ({ title }: { title: string }) =>
@@ -51,16 +60,13 @@ const Sidebar = ({ isCollapsed, toggleSidebar }: { isCollapsed: boolean; toggleS
                 </div>
 
                 <nav className="pt-2">
-                    <NavItem icon={Clock} text="TIME TRACKER" />
-                    <NavItem icon={Calendar} text="CALENDAR" />
+                    {/* <NavItem icon={Clock} text="TIME TRACKER" to="/time-tracker" /> */}
+                    <NavItem icon={Calendar} text="CALENDAR" to="/calendar" />
                     <SectionTitle title="ANALYZE" />
-                    <NavItem icon={LayoutGrid} text="DASHBOARD" />
-                    <NavItem icon={BarChart2} text="REPORTS" />
+                    <NavItem icon={LayoutGrid} text="DASHBOARD" to="/dashboard" />
                     <SectionTitle title="MANAGE" />
-                    <NavItem icon={FileText} text="PROJECTS" />
-                    <NavItem icon={Users} text="TEAM" />
-                    <NavItem icon={UserCircle} text="CLIENTS" />
-                    <NavItem icon={Tags} text="TAGS" />
+                    <NavItem icon={FileText} text="PROJECT" to="/projects" />
+                    <NavItem icon={Tags} text="TAGS" to="/tags" />
                 </nav>
             </aside>
         </>

@@ -2,17 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Tag extends Model
 {
+    use HasFactory;
+
+    protected $primaryKey = 'tag_id';
+
     protected $fillable = [
         'name',
-
+        'creator_id'
     ];
 
-    public function timeTracker(): BelongsTo {
-        return $this->belongsTo(TimeTracker::class);
+    public $timestamps = false;
+
+    // Mối quan hệ
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'project_tags', 'tag_id', 'project_id');
     }
 }

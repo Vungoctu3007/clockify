@@ -15,20 +15,20 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', 'broadcasting/auth'],
 
-    'allowed_methods' => ['*'], // Hoặc chỉ rõ ['GET', 'POST', 'PUT', 'DELETE']
+    'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:5173'], // Chỉ định domain cụ thể
+    'allowed_origins' => ['http://localhost:5174'],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'], // Hoặc chỉ rõ ['Content-Type', 'Authorization']
+    'allowed_headers' => ['*'],
 
-    'exposed_headers' => ['Authorization'], // Nếu cần expose Authorization header
+    'exposed_headers' => [''],
 
-    'max_age' => 3600, // Cache preflight trong 1 giờ
+    'max_age' => 3600,
 
-    'supports_credentials' => true, // Cho phép cookie và thông tin xác thực
+    'supports_credentials' => true,
 
 ];

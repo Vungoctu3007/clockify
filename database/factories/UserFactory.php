@@ -11,34 +11,24 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends Factory
 {
-    /**
-     * The current password being used by the factory.
-     */
-    protected static ?string $password;
-
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'name' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'phone' => $this->faker->phoneNumber(),
+            'province_id' => $this->faker->numerify('##'), // Sinh mã tỉnh giả (2 chữ số)
+            'district_id' => $this->faker->numerify('###'), // Sinh mã quận giả (3 chữ số)
+            'ward_id' => $this->faker->numerify('#####'), // Sinh mã phường giả (5 chữ số)
+            'address' => $this->faker->address(),
+            'birthday' => $this->faker->dateTimeBetween('-50 years', '-18 years'),
+            'image' => $this->faker->imageUrl(200, 200, 'people'),
+            'description' => $this->faker->paragraph(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => Hash::make('password'), // Mật khẩu mặc định: "password"
             'remember_token' => Str::random(10),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
-    }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
     }
 }

@@ -13,6 +13,8 @@ class User extends Authenticatable implements JWTSubject
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+
+    protected $primaryKey = 'user_id';
     /**
      * The attributes that are mass assignable.
      *
@@ -21,7 +23,17 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'province_id',
+        'district_id',
+        'ward_id',
+        'address',
+        'birthday',
+        'image',
+        'description',
+        'email_verified_at',
         'password',
+        'remember_token',
     ];
 
     /**
@@ -66,6 +78,25 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    // Mối quan hệ
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'assignee_id', 'user_id');
+    }
 
-    
+    public function timeEntries()
+    {
+        return $this->hasMany(TimeEntry::class, 'user_id', 'user_id');
+    }
+
+    public function teamMembers()
+    {
+        return $this->hasMany(TeamMember::class, 'user_id', 'user_id');
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'user_id', 'user_id');
+    }
+
 }

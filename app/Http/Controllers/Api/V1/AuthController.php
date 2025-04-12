@@ -34,7 +34,6 @@ class AuthController extends Controller
 
         $user = auth()->user();
 
-
         $refreshTokenData = $this->refreshTokenData($user);
 
         $refresh_token = JWTAuth::getJWTProvider()->encode($refreshTokenData);
@@ -123,10 +122,10 @@ class AuthController extends Controller
             config('jwt.refresh_ttl'), // 1 ngày
             '/',
             null,
-            true,
-            true,
             false,
-            'None'
+            false,
+            false,
+            'Lax'
         );
 
         $refreshCookie = Cookie::make(
@@ -135,10 +134,10 @@ class AuthController extends Controller
             config('jwt.refresh_ttl'), // 2 tuần
             '/',
             null,
-            true,
-            true,
             false,
-            'None'
+            false,
+            false,
+            'Lax'
         );
 
         return [

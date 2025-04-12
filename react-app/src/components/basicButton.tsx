@@ -8,7 +8,7 @@ interface buttonProps {
 }
 
 const BasicButton = ({ content, label, className, onClick }: buttonProps) => {
-  return <Button onClick={onClick} className={`border-collapse bg-inherit hover:bg-slate-100 text-blue-400 uppercase ${className}`}>{content} {label}</Button>
+  return <Button onClick={onClick} className={`border-collapse bg-white hover:bg-slate-100 text-blue-400 uppercase ${className}`}>{content} {label}</Button>
 }
 
 export default BasicButton

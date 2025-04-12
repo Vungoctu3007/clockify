@@ -25,7 +25,6 @@ class Jwt
             }
             $user = JWTAuth::parseToken()->authenticate();
         } catch (TokenExpiredException $e) {
-
             return response()->json(['message' => 'Token đã hết hạn'], Response::HTTP_UNAUTHORIZED);
         } catch (JWTException $e) {
             return response()->json(['message' => 'Token không hợp lệ'], Response::HTTP_UNAUTHORIZED);

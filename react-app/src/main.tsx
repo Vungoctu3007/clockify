@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ToastContainer } from "react-toastify";
 import { store } from "./redux/store.ts";
@@ -9,11 +8,15 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 
 import Layout from "./components/client/layout.tsx";
 import Login from "./pages/login.tsx";
-import Home from "./pages/home.tsx";
 import Calendar from "./pages/calendar/screens/index.tsx";
-import Tasks from "./pages/tasks/screens/index.tsx";
+import Projects from "./pages/projects/screens/index.tsx";
 import AuthMiddleware from "./middlewares/AuthMiddleware.tsx";
 import TimeTracking from "./pages/time_tracker/screens/index.tsx";
+import ProjectTasks from "./pages/projects/screens/edit.tsx";
+import Team from "./pages/team/screens/index.tsx";
+import Tags from "./pages/tags/screens/index.tsx";
+import DashboardComponent from "./components/Dashboard.tsx";
+
 
 const router = createBrowserRouter([
     {
@@ -24,29 +27,46 @@ const router = createBrowserRouter([
         path: "/",
         element: (
             <AuthMiddleware>
-               <Layout/>
+                <Layout />
             </AuthMiddleware>
         ),
         children: [
             {
                 path: "/",
-                element: <Tasks />
+                element: <DashboardComponent />,
+            },
+            {
+                path: "/dashboard",
+                element: <DashboardComponent />
             },
             {
                 path: "/calendar",
-                element: <Calendar/>
+                element: <Calendar />,
             },
             {
-                path: "/tasks",
-                element: <Tasks/>
+                path: "/projects",
+                element: <Projects />,
             },
             {
-                path: "/time-tracker",
-                element: <TimeTracking/>
+                path: "/projects/:projectId/edit",
+                element: <ProjectTasks />,
+            },
+            // {
+            //     path: "/time-tracker",
+            //     element: <TimeTracking />,
+            // },
+            {
+                path: "/team",
+                element: <Team />,
+            },
+            {
+                path: "/tags",
+                element: <Tags />,
             },
         ],
     },
 ]);
+
 
 createRoot(document.getElementById("root")!).render(
     <Provider store={store}>

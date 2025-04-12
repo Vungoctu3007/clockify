@@ -1,34 +1,53 @@
 import axios from "axios";
-import { ITask } from "@/interfaces/type/task";
 
-const endpoint = 'tasks'
+const endpoint = "tasks";
 
-export const pagination = async(
-    queryString: string
-) => {
+export const getAllTaskByProjectId = async (queryString: any) => {
     try {
-        const response = await axios.get(`/${endpoint}/index?${queryString}`);
+        const response = await axios.get(`/${endpoint}/index`, {
+            params: queryString,
+        });
         return response.data;
     } catch (error) {
-        console.error("Error paginate tasks", error);
+        console.error("Error paginate projects", error);
         throw error;
     }
-}
+};
 
-export const save = async(
-    payload: ITask,
-    updateParams: {action: string, id: string | undefined}
-) => {
+export const createTask = async (taskData: {
+    title: string;
+    description: string;
+    project_id: number;
+    user_id: number | null
+}) => {
     try {
-        const urlApi = updateParams.action === "update" && updateParams.id
-            ? `/tasks/${updateParams.id}`
-            : "/tasks";
-
-        const response = await axios.post(urlApi, payload);
-        console.log("save successfully");
+        const response = await axios.post(`/${endpoint}/create`, taskData);
         return response.data;
     } catch (error) {
-        console.error("Error saving task:", error);
+        console.error("Error creating task", error);
         throw error;
     }
-}
+};
+
+export const updateTask = async (taskId: number, taskData: {
+    title: string;
+    description: string;
+}) => {
+    try {
+        const response = await axios.put(`/${endpoint}/${taskId}`, taskData);
+        return response.data;
+    } catch (error) {
+        console.error("Error updating task", error);
+        throw error;
+    }
+};
+
+export const deleteTask = async (taskId: number) => {
+    try {
+        const response = await axios.delete(`/${endpoint}/${taskId}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error deleting task", error);
+        throw error;
+    }
+};

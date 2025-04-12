@@ -4,7 +4,7 @@ interface basicPropsInput {
     type: string;
     placeholder?: string;
     className?: string;
-    taskName?: string;
+    value?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -12,7 +12,7 @@ const BasicInput = ({
     type,
     placeholder,
     className,
-    taskName,
+    value,
     onChange = () => {}
 }: basicPropsInput) => {
     return (
@@ -20,7 +20,7 @@ const BasicInput = ({
             type={type}
             placeholder={placeholder}
             className={className}
-            value={taskName}
+            value={value}
             onChange={onChange}
         />
     );
